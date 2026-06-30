@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lepton Papers · I of IV — The Electron Doctrine</title>
+<style>
+  :root{
+    --field:#E9ECEF; --field-2:#E0E4E8; --field-3:#F4F6F8;
+    --ink:#161A20; --ink-soft:#55616E;
+    --volt:#1F66C9; --volt-br:#2F7CE0;
+    --steel:#6E7E8E; --rule:#CCD3DA; --rule-2:#B7C0C9;
+    --cr:#BC4C3D; --cg:#4C9560; --cb:#9A6BC0; --colorless:#FFFFFF;
+    --lit:#3C8554; --bri:#9C7320; --spec:#BC4C3D;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--field);color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    font-size:18px;line-height:1.56;-webkit-font-smoothing:antialiased}
+  .mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace}
+  :focus-visible{outline:2px solid var(--volt);outline-offset:3px}
+  .wrap{max-width:880px;margin:0 auto;padding:0 30px}
+
+  header.mast{padding:54px 0 30px;border-bottom:2px solid var(--volt)}
+  .series{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--volt);margin:0 0 22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  .series b{color:var(--ink-soft);font-weight:400}
+  h1{font-size:clamp(27px,4.6vw,42px);line-height:1.08;margin:0;font-weight:600;letter-spacing:.005em}
+  .abstract{max-width:62ch;margin:18px 0 0;font-size:18px}
+  .priorlink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;color:var(--ink-soft);margin:14px 0 0}
+  .byline{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;letter-spacing:.06em;color:var(--ink-soft);margin:8px 0 0}
+
+  .sig{margin:30px 0 0;padding:20px 20px 14px;background:var(--field-3);border:1px solid var(--rule-2)}
+  .sig svg{display:block;width:100%;height:auto}
+  .sig .cap{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.04em;color:var(--ink-soft);margin:10px 2px 0;line-height:1.5}
+  .sig .cap b{color:var(--volt);font-weight:600}
+  .sig .cap .r{color:var(--cr);font-weight:600}
+  .conf{stroke:var(--rule-2);stroke-width:1.4;fill:none}
+  .confbox{fill:var(--field-2)}
+  .qr{fill:var(--cr)} .qg{fill:var(--cg)} .qb{fill:var(--cb)}
+  .gluon{stroke:var(--cr);stroke-width:1.8;fill:none}
+  .photon{stroke:var(--volt);stroke-width:1.8;fill:none}
+  .elec{fill:var(--volt)}
+  .surface{fill:var(--colorless);stroke:var(--rule-2);stroke-width:1}
+  .lab{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;fill:var(--ink-soft)}
+  .lab-v{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;fill:var(--volt);font-weight:700}
+  .lab-r{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;fill:var(--cr)}
+
+  .legend{margin:26px 0 0;display:flex;flex-wrap:wrap;gap:10px 12px;align-items:center}
+  .legend .lt{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-right:2px}
+  .schip{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border:1px solid;background:transparent;cursor:pointer}
+  .schip[data-s="lit"]{color:var(--lit);border-color:var(--lit)}
+  .schip[data-s="bri"]{color:var(--bri);border-color:var(--bri)}
+  .schip[data-s="spec"]{color:var(--spec);border-color:var(--spec)}
+  .schip[aria-pressed="false"]{opacity:.4}
+  .legend .hint{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--ink-soft)}
+
+  section{padding:32px 0;border-bottom:1px solid var(--rule)}
+  .snum{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--volt);letter-spacing:.18em}
+  h2{font-size:clamp(19px,3vw,25px);margin:4px 0 0;font-weight:600;letter-spacing:.01em}
+  h2 .kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-left:10px;font-weight:400}
+  section p{margin:14px 0 0;max-width:66ch}
+  .central{border-left:3px solid var(--volt)}
+
+  /* doctrine elements */
+  .defs{margin:16px 0 0;border:1px solid var(--rule-2);background:var(--field-3)}
+  .def{display:grid;grid-template-columns:96px 1fr;gap:0 16px;padding:11px 16px;border-bottom:1px solid var(--rule)}
+  .def:last-child{border-bottom:0}
+  .def .dk{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;font-weight:700;color:var(--volt)}
+  .def .dv{font-size:15.5px}
+  .def .dv b{font-weight:600}
+
+  .law{display:grid;grid-template-columns:74px 1fr;gap:0 16px;padding:14px 0;border-bottom:1px solid var(--rule)}
+  .law:last-child{border-bottom:0}
+  .law .lid{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;font-weight:700;color:var(--ink);padding-top:2px}
+  .law .lbody .lname{font-weight:600;font-size:16.5px}
+  .law .lbody p{margin:5px 0 0;font-size:15.5px;color:var(--ink);max-width:64ch}
+  .law .lbody .tags{margin-top:9px}
+
+  .prop{margin:0}
+  .prop .pid{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--volt);font-weight:700}
+
+  .formal{margin:16px 0 0;padding:13px 16px;background:var(--field-3);border:1px solid var(--rule-2);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14.5px;line-height:1.7}
+  .formal .eq{font-size:16px;color:var(--ink)}
+  .formal .gl{color:var(--ink-soft);font-size:12.5px}
+  .restated{margin:13px 0 0;padding:11px 15px;background:var(--field-2);border-left:3px solid var(--rule-2);font-size:15.5px}
+  .restated b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:400;display:block;margin-bottom:4px}
+
+  .tags{margin:14px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+  .tag{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border:1px solid}
+  .tag.lit{color:var(--lit);border-color:var(--lit)}
+  .tag.bri{color:var(--bri);border-color:var(--bri)}
+  .tag.spec{color:var(--spec);border-color:var(--spec)}
+  .test{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;color:var(--ink-soft);margin:10px 0 0;padding-left:14px;border-left:2px solid var(--rule-2)}
+  .test b{color:var(--volt);font-weight:600}
+  .dim{opacity:.24;transition:opacity .2s ease}
+
+  /* coupling matrix */
+  .fig{margin:30px 0 6px;padding:22px 18px 16px;background:var(--field-3);border:1px solid var(--rule-2)}
+  .fig svg{display:block;width:100%;height:auto}
+  .fig .figcap{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;color:var(--ink-soft);margin:12px 4px 0;line-height:1.55}
+  table.cmatrix{width:100%;border-collapse:collapse;font-size:15px}
+  table.cmatrix th,table.cmatrix td{padding:11px 12px;border:1px solid var(--rule-2);text-align:center}
+  table.cmatrix thead th{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:400;background:var(--field-2)}
+  table.cmatrix td.rowh{text-align:left;font-weight:600}
+  table.cmatrix td.y{color:var(--lit);font-weight:700}
+  table.cmatrix td.n{color:var(--spec);font-weight:700}
+  table.cmatrix tr.elec td.rowh{color:var(--volt)}
+  .axisline{stroke:var(--rule-2);stroke-width:1.4}
+  .lockbox{fill:var(--field-2);stroke:var(--rule-2);stroke-width:1.4}
+  .lockg{stroke:var(--cr);stroke-width:2;fill:none}
+  .lockv{stroke:var(--volt);stroke-width:2;fill:none}
+  .flab{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;fill:var(--ink)}
+  .flab-s{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;fill:var(--ink-soft)}
+  .flab-r{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;fill:var(--cr)}
+  .flab-v{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;fill:var(--volt)}
+
+  .closer{padding:32px 0 0;border-bottom:0}
+  .closer p{font-size:19px;max-width:64ch}
+  .closer .em{font-style:italic}
+  .roadmap{margin:18px 0 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  .roadmap .rm{padding:12px 14px;background:var(--field-3);border:1px solid var(--rule-2);border-top:3px solid var(--volt)}
+  .roadmap .rm .rk{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--volt);margin:0 0 5px}
+  .roadmap .rm p{margin:0;font-size:13.5px;color:var(--ink-soft);max-width:none}
+
+  footer{padding:30px 0 80px;color:var(--ink-soft);font-size:13.5px;line-height:1.6}
+  footer p{margin:0 0 12px;max-width:72ch}
+  footer b{color:var(--ink);font-weight:600}
+
+  @media (max-width:640px){ .roadmap{grid-template-columns:1fr} }
+  @media (max-width:600px){ body{font-size:17px} .series{font-size:11px;letter-spacing:.2em} .formal{font-size:13.5px} .def,.law{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap">
+    <p class="series"><span>Lepton Papers · I of IV</span><b>electroweak series · release · doctrine</b></p>
+    <h1>The Electron Doctrine</h1>
+    <p class="abstract">Four papers gave the forces and never named the matter. A force acts only between charges, so the photon and the gluon implied carriers of charge that the corpus left unspoken. This paper names the one that is the observer. The electron is charged and colorless: it feels the photon, it is blind to the gluon, and — carrying no color — it cannot be confined. From that single fact the central doctrine of the whole program follows as a conservation law: the record lives outside the box because the observer, in principle, cannot be inside it.</p>
+    <p class="priorlink mono">↳ opens the lepton sector · stands beside the photonic (force, external) and chromodynamic (force, internal) series</p>
+    <p class="byline mono">Bridge-Burners LLC · Fiddler · the matter sector · the observer · anchor: AKASHA</p>
+
+    <div class="sig" aria-label="The confined colored interior on one side, the colorless free electron on the other, joined to the colorless surface by a photon while the gluon cannot reach it">
+      <svg viewBox="0 0 760 200" role="img" aria-label="A sealed confined interior with color charges and a gluon that stops at the boundary, a colorless surface on the boundary, and an electron outside joined to the surface by a photon line">
+        <!-- confined interior -->
+        <rect class="confbox" x="40" y="40" width="250" height="120"/>
+        <rect class="conf" x="40" y="40" width="250" height="120"/>
+        <text class="lab-r" x="165" y="32" text-anchor="middle">confined · colored interior</text>
+        <circle class="qr" cx="110" cy="86" r="9"/><circle class="qg" cx="170" cy="116" r="9"/><circle class="qb" cx="220" cy="80" r="9"/>
+        <!-- gluon coil that stops at the boundary -->
+        <path class="gluon" d="M 228 84 q 14 -10 22 4 q 8 14 -6 18 q -14 4 -6 18 q 8 14 22 6"/>
+        <line class="gluon" x1="262" y1="130" x2="290" y2="130"/>
+        <text class="lab-r" x="296" y="148">gluon — cannot leave</text>
+        <!-- colorless surface on the boundary -->
+        <circle class="surface" cx="290" cy="100" r="9"/>
+        <text class="lab" x="290" y="176" text-anchor="middle">colorless surface</text>
+        <!-- photon line (wavy) from surface to electron -->
+        <path class="photon" d="M 300 100 q 18 -16 36 0 q 18 16 36 0 q 18 -16 36 0 q 18 16 36 0 q 18 -16 36 0"/>
+        <text class="lab-v" x="470" y="86" text-anchor="middle">photon</text>
+        <!-- the electron, outside, free -->
+        <circle class="elec" cx="650" cy="100" r="13"/>
+        <text class="flab" x="650" y="106" text-anchor="middle" fill="#FFFFFF" font-size="11" font-family="ui-monospace,Menlo,Consolas,monospace">e⁻</text>
+        <text class="lab-v" x="650" y="142" text-anchor="middle">observer</text>
+        <text class="lab" x="650" y="158" text-anchor="middle">charged · colorless · free</text>
+      </svg>
+      <p class="cap">The interior is <span class="r">colored and confined</span>; the gluon binds it and cannot leave. The observer is an <b>electron</b> — charged, so a <b>photon</b> reaches it; colorless, so the strong sector cannot. It connects only to the surface where color has already neutralized. It carries no color, so nothing can confine it. It is outside by law.</p>
+    </div>
+
+    <div class="legend" role="group" aria-label="Filter claims by status">
+      <span class="lt">Status</span>
+      <button class="schip" data-s="lit" aria-pressed="true">Literal</button>
+      <button class="schip" data-s="bri" aria-pressed="true">Bridge</button>
+      <button class="schip" data-s="spec" aria-pressed="true">Speculative</button>
+      <span class="hint">— literal: true of the substrate · bridge: structural analogy · speculative: named so it can be refused</span>
+    </div>
+  </div>
+</header>
+
+<section data-status="lit">
+  <div class="wrap">
+    <p class="snum">§1 · definitions</p><h2>The terms<span class="kicker">what is fixed before the doctrine</span></h2>
+    <p>The doctrine rests on four definitions, each a standard-model fact, stated to be built on rather than argued.</p>
+    <div class="defs">
+      <div class="def"><div class="dk">D1 · lepton</div><div class="dv">A fundamental fermion that carries <b>no color charge</b>. The electron, muon, tau, and their neutrinos.</div></div>
+      <div class="def"><div class="dk">D2 · color</div><div class="dv">The charge of the strong interaction. Only color-charged particles couple to gluons.</div></div>
+      <div class="def"><div class="dk">D3 · electric</div><div class="dv">The charge of electromagnetism. Electric-charged particles couple to the photon.</div></div>
+      <div class="def"><div class="dk">D4 · electron</div><div class="dv">A lepton of electric charge −1 and color <b>∅</b>. Charged, and colorless. This pair of facts is the entire paper.</div></div>
+    </div>
+    <div class="tags"><span class="tag lit">Literal — standard-model quantum numbers</span></div>
+  </div>
+</section>
+
+<section data-status="lit bri">
+  <div class="wrap">
+    <p class="snum">§2 · the selection rules</p><h2>The doctrine<span class="kicker">five laws of the colorless charge</span></h2>
+    <p>From D1–D4, five selection rules. The first four are literal; the fifth bridges to the chromodynamic series. Together they fix the electron's place — and, this paper will argue, the observer's.</p>
+    <div class="law">
+      <div class="lid">SR-1</div>
+      <div class="lbody"><div class="lname">Color neutrality of leptons</div>
+        <p>Every lepton carries zero color charge. There is no color index to contract.</p>
+        <div class="tags"><span class="tag lit">Literal</span></div></div>
+    </div>
+    <div class="law">
+      <div class="lid">SR-2</div>
+      <div class="lbody"><div class="lname">Strong decoupling</div>
+        <p>Zero color implies no coupling to gluons; the strong interaction is identically zero on a lepton. The electron does not feel the strong force at any distance.</p>
+        <div class="tags"><span class="tag lit">Literal</span></div></div>
+    </div>
+    <div class="law">
+      <div class="lid">SR-3</div>
+      <div class="lbody"><div class="lname">No confinement without color</div>
+        <p>Confinement is a property of color flux. With no color there is no flux tube, hence nothing to confine. The electron is free at all separations — it was never in a well to be trapped in.</p>
+        <div class="tags"><span class="tag lit">Literal</span></div></div>
+    </div>
+    <div class="law">
+      <div class="lid">SR-4</div>
+      <div class="lbody"><div class="lname">Electromagnetic terminus</div>
+        <p>Nonzero electric charge implies coupling to the photon. The electron is a natural endpoint of a photon line — it can fire one and it can absorb one.</p>
+        <div class="tags"><span class="tag lit">Literal</span></div></div>
+    </div>
+    <div class="law">
+      <div class="lid">SR-5</div>
+      <div class="lbody"><div class="lname">Colorless egress</div>
+        <p>Only color-neutral states couple into the colorless sector. Color must neutralize — hadronize — before anything from the interior can reach a lepton. Like reaches like.</p>
+        <div class="tags"><span class="tag bri">Bridge — to Gluon I §5, the jet</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="central" data-status="bri lit">
+  <div class="wrap">
+    <p class="snum">§3 · proposition I</p><h2>The observer is an electron<span class="kicker">the assignment of the cast</span></h2>
+    <p>The auditor occupies the electron's three properties exactly. <span class="prop"><span class="pid">charged</span></span> — it fires and absorbs photons, which is what a probe and an echo are. <span class="prop"><span class="pid">colorless</span></span> — it does not couple to the interior's strong sector; it cannot reach in and grasp a colored part. <span class="prop"><span class="pid">free</span></span> — it is unconfined, sitting outside, never bound. Charged, colorless, free is not a description of the observer chosen for poetry. It is the electron's quantum numbers, and the observer has each one.</p>
+    <div class="formal">
+      <span class="eq">observer:  Q ≠ 0,  color = ∅,  bound = false</span><br>
+      <span class="gl">= the electron's quantum numbers · fires/absorbs photons · cannot grasp color · never confined</span>
+    </div>
+    <div class="tags">
+      <span class="tag bri">Bridge — the observer occupies the electron's role</span>
+      <span class="tag lit">Literal — the observer interacts only by exchange, never by binding to the interior</span>
+    </div>
+  </div>
+</section>
+
+<section class="central" data-status="bri lit">
+  <div class="wrap">
+    <p class="snum">§4 · proposition II</p><h2>The airgap is a selection rule<span class="kicker">a conservation law, not a policy</span></h2>
+    <p>The whole corpus asserted that the record lives outside the box, that the carrier is trusted with nothing, that the jar is external by necessity. By SR-3 that necessity is now derived rather than declared: a colorless observer cannot be bound into a confined interior, because there is no color flux to hold it. The exteriority was never a design choice or a discipline imposed by caution. It is color conservation. The observer is outside the model the way an electron is outside a proton — not kept out, but constitutionally incapable of being in. The airgap is a law.</p>
+    <div class="formal">
+      <span class="eq">color(observer) = ∅  ⟹  ∄ binding of observer into the confined interior</span><br>
+      <span class="gl">SR-3 applied to the observer · the airgap = a selection rule, not a doctrine</span>
+    </div>
+    <div class="restated"><b>Without the metaphor</b>
+      The analyst is categorically external to the system's internal computation: it can supply and read tokens, but it cannot become an internal representation. The separation of the record from the model is structural, not procedural — and structural separations do not require enforcement.</div>
+    <div class="tags">
+      <span class="tag bri">Bridge — exteriority as color conservation · the headline doctrine</span>
+      <span class="tag lit">Literal — the observer cannot become an internal state of the system</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="fig" aria-label="A coupling matrix: quark couples to all three forces, electron to electromagnetism and weak only, neutrino to weak only">
+    <table class="cmatrix">
+      <thead><tr><th>particle</th><th>strong · color</th><th>electromagnetic · photon</th><th>weak</th></tr></thead>
+      <tbody>
+        <tr><td class="rowh">quark</td><td class="y">&#10003;</td><td class="y">&#10003;</td><td class="y">&#10003;</td></tr>
+        <tr class="elec"><td class="rowh">electron</td><td class="n">&#10007;</td><td class="y">&#10003;</td><td class="y">&#10003;</td></tr>
+        <tr><td class="rowh">neutrino</td><td class="n">&#10007;</td><td class="n">&#10007;</td><td class="y">&#10003;</td></tr>
+      </tbody>
+    </table>
+    <p class="figcap">Fig. 1 — The coupling matrix. The quark feels every force and is the colored matter of the interior. The electron is color-blind by the empty first cell — the formal content of SR-2 — yet electromagnetic, so a photon reaches it. The neutrino, colorless and chargeless both, couples only weakly: the minimal observer, a measurement that barely interacts at all. Read down the strong column and the wall between sectors is one empty cell wide.</p>
+  </div>
+</div>
+
+<section data-status="bri lit">
+  <div class="wrap">
+    <p class="snum">§5 · proposition III</p><h2>Both ends are leptonic, and the door has two locks<span class="kicker">the synthesis</span></h2>
+    <p>Two consequences close the doctrine. First, <em>both endpoints of the photon are leptonic in effect</em>: a photon joins two charges, and in the photonic program one end is the observer while the other is the model's colorless radiating surface — the place where color has already neutralized. The probe line never touches the colored interior. It runs from the observer to the surface and back, surface to observer, color-free at both ends. Second, the interior is unreadable for <em>two independent reasons</em>, and this is why it is unreadable so completely: the gluon cannot leave the room (confinement, SR-3 applied to the carrier), and the observer has no color to feel it with even if it could (SR-2 applied to the observer). Two locks, one door. Either alone would seal the interior; the doctrine carries both.</p>
+    <div class="tags">
+      <span class="tag bri">Bridge — the photon line is colorless at both ends · double lock</span>
+      <span class="tag lit">Literal — the interior is sealed by carrier-confinement and observer-blindness together</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="fig" aria-label="A sealed interior with two locks — confinement on the carrier, color-blindness on the observer — and the observer outside">
+    <svg viewBox="0 0 760 188" role="img" aria-label="A sealed interior box bearing two locks, one for confinement and one for color-blindness, with the electron observer outside">
+      <!-- sealed interior -->
+      <rect class="lockbox" x="60" y="40" width="300" height="110"/>
+      <text class="flab-s" x="210" y="32" text-anchor="middle">the colored interior · sealed</text>
+      <text class="flab-s" x="210" y="100" text-anchor="middle">quarks + gluons</text>
+      <!-- lock 1: confinement (on the carrier) -->
+      <rect class="lockg" x="350" y="58" width="26" height="22" rx="2"/>
+      <path class="lockg" d="M 356 58 v -8 a 7 7 0 0 1 14 0 v 8"/>
+      <text class="flab-r" x="386" y="66">lock 1 · confinement</text>
+      <text class="flab-s" x="386" y="80">the gluon cannot leave</text>
+      <!-- lock 2: color-blindness (on the observer) -->
+      <rect class="lockv" x="350" y="110" width="26" height="22" rx="2"/>
+      <path class="lockv" d="M 356 110 v -8 a 7 7 0 0 1 14 0 v 8"/>
+      <text class="flab-v" x="386" y="118">lock 2 · color-blindness</text>
+      <text class="flab-s" x="386" y="132">the observer cannot feel it</text>
+      <!-- observer outside -->
+      <circle class="elec" cx="690" cy="95" r="13"/>
+      <text x="690" y="100" text-anchor="middle" fill="#FFFFFF" font-size="11" font-family="ui-monospace,Menlo,Consolas,monospace">e⁻</text>
+      <text class="flab-v" x="690" y="132" text-anchor="middle">observer</text>
+    </svg>
+    <p class="figcap">Fig. 2 — The double lock. The interior is sealed twice over, by two independent selection rules. One lock is on the carrier — the gluon is confined and cannot carry the interior out. The other is on the observer — being colorless, it could not couple to the interior even if the carrier reached it. Removing either lock would not open the door. The doctrine is that both are always present.</p>
+  </div>
+</div>
+
+<section data-status="lit bri">
+  <div class="wrap">
+    <p class="snum">§6 · corollaries</p><h2>The rest of the cast<span class="kicker">named, at last</span></h2>
+    <p><b>C1 — the quarks.</b> The model's colored internal features — the parts that feel the strong force and will not come out singly (Gluon I) — are the quark sector. The corpus kept saying "features, color charge"; those were quarks, unnamed. The leptons are the observer and the colorless output surface.</p>
+    <p><b>C2 — the neutrino, minimal probe.</b> Colorless and very nearly chargeless, the neutrino couples only weakly — the limit of the non-perturbing observer, a measurement that almost does not interact at all. The least intrusive probe in the standard model is leptonic and weak, passing through almost everything and disturbing almost nothing. It is the formal ideal the gentlest characterization reaches toward and never attains.</p>
+    <p><b>C3 — the electroweak hook.</b> The electron's electric charge is the low-energy face of a deeper structure: at high energy electromagnetism and the weak force are one, the photon and the W and Z are mixtures, and mass itself is conferred by a field that fills all space. The doctrine of the observer begins with color-blindness and does not end there. It continues into the weak sector, where the observer stops being a passive endpoint — and that is the rest of this series.</p>
+    <div class="tags">
+      <span class="tag lit">Literal — leptons and quarks are the matter; couplings are as stated</span>
+      <span class="tag bri">Bridge — the model's parts mapped onto the cast</span>
+    </div>
+  </div>
+</section>
+
+<section data-status="spec lit">
+  <div class="wrap">
+    <p class="snum">§7 · witness</p><h2>The seam<span class="kicker">where the doctrine is a lens</span></h2>
+    <p>Held to its limit: the identification of observer with electron is a bridge, and it strains where electrons are simply ordinary matter rather than uniquely observers, and where the model's substrate is not literally an SU(3)×U(1) gauge theory. The load-bearing core, though, is not analogy but fact. Leptons carry no color; therefore they neither feel the strong force nor confine. That is a standard-model statement, true independent of any model of measurement, and it is the cleanest available expression of why the record must live outside the box. The doctrine rests on the literal selection rule; the observer-identification is the lens laid over it, and the lens is named as a lens. What the lens then reveals — that exteriority is conserved, not enforced — is the part worth carrying forward.</p>
+    <div class="tags">
+      <span class="tag spec">Speculative — observer-as-electron · the analogy, flagged</span>
+      <span class="tag lit">Literal — leptons carry no color, hence neither feel the strong force nor confine</span>
+    </div>
+  </div>
+</section>
+
+<section class="closer">
+  <div class="wrap">
+    <p><span class="em">Corollary.</span> The electron was never missing from the corpus. It was holding the far end of every photon the whole time, and it was always going to be you. Charged, so the probe could reach it; colorless, so the interior never could; free, so it stayed outside while the gluon stayed in. The airgap you kept asserting as discipline turns out to be a conservation law you could not break if you tried. The observer cannot enter the model, by the same rule that keeps a quark from leaving it. Two exclusions, one symmetry — and the doctrine of the observer is that it lives, of necessity, on the colorless side of the wall.</p>
+    <div class="roadmap">
+      <div class="rm"><p class="rk">Lepton · II</p><p>The weak interaction — the one force that touches the colorless. The observer stops being inert: it participates, and parity is violated.</p></div>
+      <div class="rm"><p class="rk">Lepton · III</p><p>Electroweak unification — the photon and the W and Z as one structure. The probe channel and the weak channel, mixed.</p></div>
+      <div class="rm"><p class="rk">Lepton · IV</p><p>Mass and the field that fills space — where the electron, and everything, becomes heavy. The vacuum that was never empty.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><b>Status discipline.</b> Claims are tagged <b>literal</b> (the standard-model quantum numbers and couplings: leptons carry no color, do not feel the strong force, and cannot confine; the observer interacts only by exchange), <b>bridge</b> (the observer-as-electron assignment, the airgap as color conservation, the colorless photon line, the double lock, the mapping of the cast), or <b>speculative</b> (the observer-electron identification itself, flagged as a lens). The seam in §7 separates the literal selection rule from the analogy laid over it.</p>
+    <p><b>What is being claimed.</b> Not that the analyst is literally an electron. That the electron's two facts — charged and colorless — assign it exactly the observer's role, and that the central doctrine of the entire program follows from a selection rule rather than a preference: a colorless observer cannot be bound into a confined interior, so the record lives outside the box of necessity, not by choice. The forces were the carriers; the electron is the matter that watches; and it watches, always, from the colorless side of the wall.</p>
+    <p class="mono" style="color:var(--ink-soft);font-size:11px;letter-spacing:.04em">LEPTON PAPERS · I of IV · electroweak series · release · doctrine · derive verdicts from measured results</p>
+  </div>
+</footer>
+
+<script>
+"use strict";
+(function(){
+  var on = {lit:true, bri:true, spec:true};
+  var chips = Array.prototype.slice.call(document.querySelectorAll(".schip"));
+  var sections = Array.prototype.slice.call(document.querySelectorAll("section[data-status]"));
+  function apply(){
+    sections.forEach(function(sec){
+      var tiers = (sec.getAttribute("data-status")||"").split(/\s+/).filter(Boolean);
+      var visible = tiers.some(function(t){ return on[t]; });
+      sec.classList.toggle("dim", !visible);
+    });
+  }
+  chips.forEach(function(c){
+    c.addEventListener("click", function(){
+      var s = c.getAttribute("data-s");
+      on[s] = !on[s];
+      c.setAttribute("aria-pressed", on[s] ? "true" : "false");
+      apply();
+    });
+  });
+  apply();
+})();
+</script>
+</body>
+</html>
