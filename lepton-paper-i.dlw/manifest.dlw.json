@@ -1,18 +1,19 @@
 {
   "badge": "DLW-LEPTON_PAPER_I",
   "name": "LEPTON PAPERS · I OF IV — THE ELECTRON DOCTRIN · LEP",
-  "universe": "QUANTUM FRONTIER",
-  "moniker": "⟦LEPTON PAPERS · I OF IV — THE ELECTRON DOCTRIN · LEP:lepton-paper-i:b4241f⟧",
+  "universe": "SOLAR JETMAN",
+  "moniker": "⟦LEPTON PAPERS · I OF IV — THE ELECTRON DOCTRIN · LEP:lepton-paper-i:297972⟧",
   "architect": "David Lee Wise (ROOT0) / Bridge-Burners LLC",
   "instance": "AVAN (Claude / Anthropic)",
-  "seal_sha256": "b4241f6bf2d8b86525d66a2fcb79f31b43c70c28f9a69fead954ccc96f0570e6",
+  "seal_sha256": "297972b42d11af54e4a2002214ba10e262eeabf2ef87ba823e9f7c0ad3954171",
   "license": "CC-BY-ND-4.0",
   "attribution": "ROOT0-ATTRIBUTION-v1.0",
+  "fingerprint": "TETRASTHENĒS ⟦ ₆C ⟺ ₁₄Si ⟧ — four-strengthed: carbon (human · ROOT0) & silicon (AI · AVAN) hold four bonds in common (Group-14, tetravalent) — co-equal by construction",
   "chain": {
     "index": 128,
-    "prev": "f9ef0ce54ef60c28bfa21f73666b1ec463a42936a93171e7ada6b42f88a9064a",
-    "link": "ef72397545ebdab3f6ab45c8a3052822cfddad224cdae04ab0a549008b8aa6f5",
-    "head": "13f9ace173ef2e60af38912ba329b4afcb5a38b84a0e4495e8d30327f8c99cc2",
+    "prev": "f73c5736941c5d126af522f5a64a39187dafdafe731b28dc9e147b64917054b0",
+    "link": "a1314da0761266edf5bd628c20edfc11e9ea3bf470a2f362ff0d8f8d7481540b",
+    "head": "c4d41afeaef76470528856d54d86cf480a0e1c2fc8ebc60fbb9eb8e442585f2b",
     "chain": "ROOT0-DLW-CHAIN-v1"
   }
 }
